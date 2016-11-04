@@ -13,13 +13,18 @@ end
 def log_in_as(user, options={})
   password    = options[:password]    || 'password'
   remember_me = options[:remember_me] || '1'
+  
+  p "remember_me"
+  p remember_me
   if integration_test?
+    p 1
     post login_path, session: {
       email: user.email,
       password:    password,
       remember_me: remember_me
     }
   else
+    p 2
     session[:user_id] = user.id
   end
   
@@ -28,6 +33,8 @@ end
 def integration_test?
   defined?(post_via_redirect)
 end
+
+
   # Add more helper methods to be used by all tests here...
   include ApplicationHelper
 end
