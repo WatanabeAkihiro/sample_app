@@ -10,8 +10,8 @@ class MicropostsController < ApplicationController
     else
       @feed_items = []
       render 'static_pages/home'
+    end
   end
-end
   
   def destroy
     @micropost.destroy
@@ -19,7 +19,7 @@ end
     redirect_to request.referrer || root_url
   end
   
-    private
+  private
 
     def micropost_params
       params.require(:micropost).permit(:content, :picture)
