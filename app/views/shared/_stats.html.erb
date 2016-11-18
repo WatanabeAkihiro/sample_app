@@ -4,7 +4,11 @@
     <strong id="microposts" class="stat">
       <%= @user.microposts.count %>
       </strong>
-      <%= "micropost".pluralize if @user.microposts.count > 1 %>
+      <% if @user.microposts.count > 1 then %>
+      microposts
+      <% else  %>
+      micropost
+      <% end %>
       </a>
   <a href="<% following_user_path(@user) %>">
     <strong id="following" class="stat">
