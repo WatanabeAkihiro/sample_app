@@ -1,0 +1,1 @@
+$("#like-buttons").html("<%= j(render partial: 'shared/feed', locals: { @feed_items => @microposts, likes: @likes }) %>");
