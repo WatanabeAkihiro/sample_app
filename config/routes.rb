@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  post 'like/:micropost_id' => 'likes#create'
+  delete 'unlike/:micropost_id' => 'likes#destroy'
   resources :users do
     member do
       get :following, :followers
