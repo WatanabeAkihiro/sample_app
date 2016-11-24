@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post 'like/:micropost_id' => 'likes#like', as: 'like'
+  delete 'unlike/:micropost_id' => 'likes#unlike', as: 'unlike'
+  
   get 'password_resets/new'
 
   get 'password_resets/edit'
