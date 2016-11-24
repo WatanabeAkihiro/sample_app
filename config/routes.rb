@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+    
+  get "/tweet" => "tweet#timeline"
+  get "/signout_twitter" => "sessions#destroy"
+  
+  get "/auth/:provider/callback" => "sessions#create" 
   resources :users do
     member do
       get :following, :followers
