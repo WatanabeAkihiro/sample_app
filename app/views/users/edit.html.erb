@@ -19,7 +19,15 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       
-      <%= render 'shared/profile'%>
+      <%= f.label :introduction %>
+      <%= f.text_field :introduction, class: 'form-control' %>
+
+      <%=f.label :location %>
+      <%= f.text_field :location, class: 'form-control' %>
+
+      <%=f.label :website %>
+      <%= f.text_field :website, class: 'form-control'%>
+
       
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>

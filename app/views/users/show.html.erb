@@ -5,6 +5,11 @@
 <h1>
   <%= gravatar_for(@user) %>
   <%= @user.name %>
+  <ul>
+  <li><%= @user.introduction %></li>
+  <li><%= @user.location %></li>
+  <li><%= @user.website %></li>
+  </ul>
 </h1>
 </section>
     <section class="stats">
