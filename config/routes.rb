@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   post 'like/:micropost_id' => 'likes#like', as: 'like'
   delete 'unlike/:micropost_id' => 'likes#unlike', as: 'unlike'
   
+  
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -18,8 +19,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  post 'like/:micropost_id' => 'likes#create'
-  delete 'unlike/:micropost_id' => 'likes#destroy'
+
   resources :users do
     member do
       get :following, :followers
@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
