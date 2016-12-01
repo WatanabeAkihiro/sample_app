@@ -11,9 +11,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
-    @microposts.each do |m|
-    @comments = m.comments
-  end
   end
   
   def new
@@ -35,9 +32,9 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
   end
   
-  def update
+    def update
     @user=User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update_attribute(user.params)
       flash[:success] = "Profile Updated"
       redirect_to @user
     else
@@ -68,9 +65,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-    params.require(:user).permit(:name, :email, :password,
-      :password_confirmation, :introduction, :location, :website
-    )
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
   
   
