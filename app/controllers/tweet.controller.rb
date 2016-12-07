@@ -1,3 +1,5 @@
+class TweetController < ApplicationController
+  
   helper_method :timeline
 
  require 'twitter'
