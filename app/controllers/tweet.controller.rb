@@ -28,3 +28,4 @@ class TweetController < ApplicationController
       p @array
     end
   end
+end
