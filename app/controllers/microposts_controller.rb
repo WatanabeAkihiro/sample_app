@@ -19,12 +19,16 @@ class MicropostsController < ApplicationController
     redirect_to request.referrer || root_url
   end
   
+<<<<<<< HEAD
   def show
     # params id からmicropostの情報を検索
     @micropost = Micropost.find(params[:id])
     @comments = @micropost.comments
     @comment = Comment.new
   end
+=======
+   
+>>>>>>> twitter-api
   
   private
 
