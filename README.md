@@ -7,3 +7,4 @@
 [Michael Hartl](http://www.michaelhartl.com/)著
 
 Githubにしてみた
+佐野が追加した分
