@@ -1,11 +1,30 @@
+ require 'twitter'
+
 class TweetController < ApplicationController
-  
+
   helper_method :timeline
 
- require 'twitter'
-  
 
- 
+
+def create
+  if (request.path_info == "/auth/twitter/callback")
+    auth = request.env["omniauth.auth"]
+    session[:oauth_token] = auth.credentials.token
+    session[:oauth_token_secret] = auth.credentials.secret
+    session[:username] = auth.extra.access_token.params[:screen_name]
+    redirect_to "/tweet", :notice => "サインイン！"
+  end
+end
+
+def destroy
+  session[:oauth_token] = nil
+  session[:oauth_token_secret] = nil
+  redirect_to root_url, :notice => "サインアウト！"
+  if (request.path_info == "/signout_twitter")
+    session[:username] = nil
+  end
+end
+
   ## twitter apiを叩いてタイムラインを表示する ##
   def timeline
     ## 何でこれ書いてるんだろう...多分無くても動く気はします ##
@@ -15,7 +34,7 @@ class TweetController < ApplicationController
       config.access_token = session[:oauth_token]
       config.access_token_secret = session[:oauth_token_secret]
     end
- 
+
     client.home_timeline(:count => 200).each do |tweet|
       ## 作りかけで恐縮ですが...二重配列にRT数などの要素を格納する予定です ##
       @array = Array.new

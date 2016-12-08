@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   post 'like/:micropost_id' => 'likes#like', as: 'like'
   delete 'unlike/:micropost_id' => 'likes#unlike', as: 'unlike'
-  
-  
+
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get "/tweet" => "tweet#timeline"
-  get "/signout_twitter" => "sessions#destroy"
-  
-  get "/auth/:provider/callback" => "sessions#create" 
+  get "/signout_twitter" => "tweet#destroy"
+
+  get "/auth/:provider/callback" => "tweet#create"
 
   resources :users do
     member do
