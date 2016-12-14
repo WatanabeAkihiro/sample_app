@@ -4,6 +4,7 @@ gem 'rails',        '4.2.2'
 gem 'twitter'
 gem 'oauth'
 gem 'omniauth-twitter'
+gem 'font-awesome-rails'
 gem 'bcrypt',               '3.1.7'
 gem 'faker',                '1.4.2'
 gem 'carrierwave',             '0.10.0'
@@ -38,6 +39,3 @@ group :production do
   gem 'rails_12factor', '0.0.2'
   gem 'puma',           '2.11.1'
 end
-
-
-
