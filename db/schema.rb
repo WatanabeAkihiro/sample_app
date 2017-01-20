@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126050555) do
+ActiveRecord::Schema.define(version: 20170107040343) do
+
+  create_table "adapters", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -20,6 +25,16 @@ ActiveRecord::Schema.define(version: 20161126050555) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "connectors", force: :cascade do |t|
+    t.integer  "comment_id"
+    t.integer  "micropost_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "connectors", ["comment_id"], name: "index_connectors_on_comment_id"
+  add_index "connectors", ["micropost_id"], name: "index_connectors_on_micropost_id"
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161126050555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "picture"
+    t.text     "title"
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
@@ -51,14 +67,30 @@ ActiveRecord::Schema.define(version: 20161126050555) do
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "taggings", force: :cascade do |t|
-    t.integer  "comment_id"
-    t.integer  "micropost_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
   end
 
-  add_index "taggings", ["comment_id"], name: "index_taggings_on_comment_id"
-  add_index "taggings", ["micropost_id"], name: "index_taggings_on_micropost_id"
+  add_index "taggings", ["context"], name: "index_taggings_on_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id"
+  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type"
+  add_index "taggings", ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+  add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

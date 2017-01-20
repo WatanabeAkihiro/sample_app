@@ -3,8 +3,11 @@ class StaticPagesController < ApplicationController
     if logged_in?
     @micropost = current_user.microposts.build
     @feed_items = current_user.feed.paginate(page: params[:page])
-    end
+  else
+    @feed_item = Micropost.all.sample(6)
+    @feed_item = Micropost.order("RANDOM()").first(6)
   end
+end
 
   def help
   end

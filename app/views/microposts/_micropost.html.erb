@@ -1,22 +1,32 @@
-<li id="micropost-<%= micropost.id %>">
-  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-  <span class="content">
-    <%= micropost.content %>
+
+<div class="idea">
+  <div class="idea-info">
+    <div class="post-icon">
+    <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+    </div>
+    <div class="user-name">
+    <%= link_to micropost.user.name, micropost.user %>
+    </div>
+  </div>
+  <div class="idea-content">
+    <div class="idea-text">
+    <h1><%= micropost.title %></h1>
+    <p><%= micropost.content %></p>
+    </div>
     <%= image_tag micropost.picture.url if micropost.picture? %>
-  </span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-    
-    <% if current_user?(micropost.user) %>
-    <%= link_to "delete", micropost, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-    <% end %>
-    <% if micropost.like_user(current_user.id)%>
-      <%= link_to 'unlike', unlike_path(micropost.id), method: :delete %>
-    <% else %>
-      <%= link_to 'like', like_path(micropost.id), method: :post %>
-    <% end %>
-      <%= link_to 'comment', micropost_path(micropost.id) %>
-  </span>
-</li>
+    <div class="timestamp">
+      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+
+      <% if current_user?(micropost.user) %>
+      <%= link_to "削除", micropost, :method => :delete,
+                                         data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
+      <% if micropost.like_user(current_user.id)%>
+        <%= link_to 'いいね！を取り消す', unlike_path(micropost.id), method: :delete %>
+      <% else %>
+        <%= link_to 'いいね！', like_path(micropost.id), method: :post %>
+      <% end %>
+        <%= link_to 'コメント', micropost_path(micropost.id) %>
+    </div>
+  </div>
+</div>

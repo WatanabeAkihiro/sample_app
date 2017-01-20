@@ -3,22 +3,22 @@
     <%= render 'shared/error_messages', object: f.object%>
     <div class="field">
       <%= hidden_field_tag 'id', @micropost.id %>
-      <%= f.text_area :comment, placeholder: "Compose new comment..."%>
+      <%= f.text_area :comment, placeholder: "本文を入力してください"%>
     </div>
   <%= f.submit "Comment", class: "btn btn-primary" %>
 <% end %>
 </div>
 
-<div class="col-md-8">
-  <ol class="microposts" >
+
+  <div class="idea" >
     <% @comments.each do |c| %>
       <% user = User.find(c.user_id)  %>
-      <li>
+        <span class="idea-info">
         <%= link_to gravatar_for(user, size: 50), user %>
-        <span class="user"><%= link_to user.name, user %></span>
-        <span class="content"><%= c.comment %></span>
-        <span class="timestamp">Commented <%= time_ago_in_words(c.created_at) %> ago.</span>
-      </li>
+        <%= link_to user.name, user %></span>
+        <span class="idea-content">
+          <span class="idea-text"><%= c.comment %></span>
+          <span class="timestamp">Commented <%= time_ago_in_words(c.created_at) %> ago.</span>
+        </span>
     <% end %>
-  </ol>
-</div>
+  </div>

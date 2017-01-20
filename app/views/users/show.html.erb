@@ -1,25 +1,45 @@
 <% provide(:title, @user.name) %>
 <div class="row">
   <aside class="col-md-4">
+    <div class="profile">
     <section class="user_info">
 <h1>
+  <div class="user_image">
   <%= gravatar_for(@user) %>
+  </div>
   <%= @user.name %>
-<ul style='list-style:none;'>
-  <li><%= @user.introduction %></li>
-  <li><%= @user.location %></li>
-  <li><%= @user.website %></li>
-  </ul>
 </h1>
+<ul class="user_info_sub">
+  <li>
+    <p class="intro">自己紹介</p>
+    <div class="intro-text">
+    <%= @user.introduction %>
+  </div>
+  </li>
+  <li>
+    <p class="intro-sub">住まい</p>
+    <div class="intro-text-sub">
+    <%= @user.location %>
+  </div>
+  </li>
+  <li>
+    <p class="intro-sub">ホームページ</p>
+    <div class="intro-text-sub">
+    <%= @user.website %>
+  </div>
+  </li>
+  </ul>
+
 </section>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
+  </div>
 </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <h3 style="margin-left: 39px;">投稿一覧(<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>

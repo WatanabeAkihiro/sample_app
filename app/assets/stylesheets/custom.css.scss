@@ -20,6 +20,7 @@
 
 body{
   padding-top:60px;
+  background-color: #EDEDED;
 }
 section{
   overflow:auto;
@@ -63,16 +64,21 @@ p{
   float:left;
   margin-right:10px;
   font-size:1.7em;
-  text-transform:uppercase;
   letter-spacing:-1px;
-  color:#fff;
+  color:#6C747C;
   padding-top:9px;
   font-weight:bold;
 }
+
+.navbar{
+  background-color:#fff;
+}
+
 #logo:hover{
-  color:#fff;
+  color:#2F3336;
   text-decoration:none;
 }
+
 
 footer{
   margin-top:45px;
@@ -112,11 +118,11 @@ li {
 /* sidebar */
 aside{
   section.user.info{
-    margin-top:20px;
+    margin-top:5px;
   }
   section{
     padding:10px 0px;
-    margin-top:20px;
+    margin-top:5px;
   &:first-child{
     border:0;
     padding-top:0;
@@ -136,8 +142,7 @@ aside{
   }
 }
 .gravatar{
-  float:left;
-  margin-right:10px;
+
 }
 .gravatar_edit{
   margin-top:15px;
@@ -148,6 +153,7 @@ aside{
   overflow: auto;
   margin-top: 0;
   padding: 0;
+  margin-left: 5px;
   a {
     float: left;
     padding: 0 10px;
@@ -234,36 +240,75 @@ input{
 
 /*micropost*/
 
-.microposts {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
+
   .user {
     margin-top: 5em;
     padding-top: 0;
   }
-  .content {
-    display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
-    }
+  .current_user_image{
+    margin:25px 0 0 20px;
   }
+
   .timestamp {
     color: $gray-light;
     display: block;
-    margin-left: 60px;
+    margin-left: 20px;
+    bottom: 0;
   }
   .gravatar {
     float: left;
     margin-right: 10px;
-    margin-top: 5px;
+    margin-top: -5px;
   }
-}
+  .user-name{
+    float:left;
+    margin-top: 10px;
+    margin-left:20px
+  }
+  .post-icon{
+    margin:25px 0px 0px 20px;
+  }
+  .idea{
+  float:left;
+  width: 45%;
+  height: 250px;
+  margin: 0 5% 5% 0;
+  border-bottom:2px solid #e7e4e2;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  position:relative;
+  background-color:#fff;
+  overflow: hidden;
+  }
+
+  .idea-info{
+    float:left;
+    width: 30%;
+    height:100%;
+    border-top-left-radius: 2px;
+
+    font-size: 90%;
+  }
+
+  .idea-content{
+        float:right;
+        width: 70%;
+        height: 100%;
+
+  }
+
+  .idea-text{
+  margin:0px 0px 10px 10px;
+  padding: 5px 15px 0 10px;
+  font-size: 70%;
+  word-break: break-all;
+    h1{
+    font-size:150%;
+    margin-bottom: 10px;
+  }
+  }
+
+
 
 aside {
   textarea {
@@ -279,54 +324,112 @@ span.picture {
   }
 }
 
-.user-info {
+.profile{
+  background-color:#fff;
+  padding:5px;
+  padding-bottom: 15px;
+  padding-left: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  margin-top:52px;
+}
+.intro{
+  font-size: 100%;
+  text-align: left;
+}
+.intro-sub{
+  font-size:80%;
+  text-align: left;
+}
+.intro-text{
+  text-align: left;
+  font-size: 90%
+
+}
+.intro-text-sub{
+  text-align: left;
+  font-size: 70%
+}
+
+.user_info {
   list-style:none;
+  text-align: left;
+  padding-left: 90px;
+}
+.user_profile{
+  list-style:none;
+  text-align: left;
+}
+.user_info_sub{
+  list-style:none;
+  padding-left:0;
+
+}
+.user_image{
+  position:absolute;
+  left:23px;
 }
 
 .fa {
   float:left;
 }
 
-.card {
-  width: 500px;
-  background:#fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px #ccc;
-  margin-left:300px;
+.main-visual {
+  background-image: image-url("s_note.jpg");
+  overflow: hidden;
+      position: relative;
+      height: 360px;
+      text-align: center;
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+}
+
+.main-visual h1 {
+  margin: 144px 0 5px;
+    font-size: 350%;
+    font-weight: normal;
+    line-height: 1.5;
+    text-align: center;
+    color:black;
+}
+
+.main-visual h2 {
+margin: 0 0 20px;
+font-size: 120%;
+font-weight: normal;
+}
+
+
+.read-more p {
+  text-align:center;
 
 }
-.card-img {
-  border-radius: 5px 5px 0 0;
-  max-width: 100%;
-  height: auto;
+
+.form-left{
+  float: left;
+  width: 50%;
 }
-.card-content {
-  padding: 20px;
+
+.form-right {
+    float: right;
+    margin-left: 1%;
+    width: 49%;
 }
-.card-title {
-  font-size: 40px;
-  margin-bottom: 20px;
+
+.idea-title{
   text-align: center;
-  color: #333;
 }
-.card-text {
-  color: #777;
-  font-size: 14px;
-  line-height: 1.5;
-}
-.card-link {
+.field{
   text-align: center;
-  border-top: 1px solid #eee;
-  padding: 20px;
 }
-.card-link a {
-  text-decoration: none;
-  color: #fff;
-  margin: 0 10px;
+.micropost_form h1{
+  text-align: center;
+  font-weight: bold;
 }
-.card-link a:hover {
-  color: #0090aa;
-}
-body{
-  background-color:#ccc;
+
+.index{
+  text-align: center;
+  font-weight: bold;
+  font-size: 150%;
 }

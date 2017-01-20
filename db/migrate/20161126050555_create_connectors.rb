@@ -1,6 +1,6 @@
-class CreateTaggings < ActiveRecord::Migration
+class CreateConnectors < ActiveRecord::Migration
   def change
-    create_table :taggings do |t|
+    create_table :connectors do |t|
       t.references :comment, index: true, foreign_key: true
       t.references :micropost, index: true, foreign_key: true
 
